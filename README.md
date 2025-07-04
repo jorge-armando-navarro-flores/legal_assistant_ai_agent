@@ -6,7 +6,7 @@ This project implements an intelligent legal assistant for internal use in law f
 
 * 🧭 **Category-based routing**: Questions are automatically classified (e.g., `Derecho Laboral`, `Derecho Civil`, etc.) and routed to specialized agents.
 * 📄 **RAG (Retrieval-Augmented Generation)**: Each agent retrieves documents from category-specific vector stores (e.g., labor contracts, civil code).
-* 🤖 **Multi-LLM fallback**: Supports fallback to alternate models (e.g., GPT-4o, Gemini, Claude) when a primary model fails.
+* 🤖 **Multi-LLM fallback**: Supports fallback to alternate models (e.g., GPT-4o, Gemini, Anthropic) when a primary model fails.
 * 🔁 **Fallback handling** when context is missing
 * 🔐 **Document-grounded responses**: Answers are based strictly on indexed PDFs (Mexican laws, policies, contracts).
 * ☁️ **Cloud-ready**: Designed to run on Azure (or locally), with modular components for easy scaling.
@@ -60,6 +60,9 @@ $ git clone https://github.com/jorge-armando-navarro-flores/legal_assistant_ai_a
 ```
 $ cd legal_assistant_ai_agent
 ```
+```
+$ pip install -r requirements.txt
+```
 Ingest docs and create chroma local index
 ```
 $ python3 app/vectorstore/ingest_docs.py 
@@ -92,7 +95,7 @@ See the response
 ![Legal Agent Endpoint](img/agent_endpoint_response.png)
 
 ## Next Steps and Future Improvements
-1. [Integrate Azure AI Search with LangChain](https://python.langchain.com/docs/integrations/vectorstores/azuresearch/)
-2. Create personalized or specialized workflows for each agent
-3. Utilize more [advanced agentic paterns](https://langchain-ai.github.io/langgraph/tutorials/workflows/) and [RAG tecniques](https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_agentic_rag/) for better retrieval 
-4. [Add memory and multistep retrieval](https://python.langchain.com/docs/tutorials/qa_chat_history/)
+1. [Integrate Azure AI Search with LangChain](https://python.langchain.com/docs/integrations/vectorstores/azuresearch/) instead of Chroma.
+2. Create personalized or specialized workflows for each agent.
+3. Utilize more [advanced agentic paterns](https://langchain-ai.github.io/langgraph/tutorials/workflows/) and [RAG tecniques](https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_agentic_rag/) for better retrieval. 
+4. [Add memory and multistep retrieval](https://python.langchain.com/docs/tutorials/qa_chat_history/).
