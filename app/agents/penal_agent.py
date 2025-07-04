@@ -19,7 +19,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langgraph.graph import StateGraph, START, END
 
 # Import the retriever for penal law documents
-from app.vectorstore.retriever import penal_retriever
+from app.vectorstore.retrievers import penal_retriever
 
 # Optional: disable Chroma telemetry if you're using it as a vector DB backend
 os.environ["CHROMA_TELEMETRY"] = "FALSE"

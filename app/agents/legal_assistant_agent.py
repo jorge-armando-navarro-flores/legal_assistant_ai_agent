@@ -10,7 +10,7 @@ from typing import TypedDict, List
 from langgraph.graph import END, START, StateGraph
 
 # Import the classifier and prompt used to detect legal categories
-from app.classifier import legal_classifier, tagging_prompt
+from app.router import legal_classifier, tagging_prompt
 
 # Import each domain-specific legal agent (graphs for each legal area)
 from app.agents.labor_agent import laboral_graph

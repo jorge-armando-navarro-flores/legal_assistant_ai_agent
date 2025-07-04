@@ -21,7 +21,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langgraph.graph import StateGraph, START, END
 
 # Import a retriever for laboral law articles (specific to labor law context)
-from app.vectorstore.retriever import laboral_retriever
+from app.vectorstore.retrievers import laboral_retriever
 
 # Optional: Disable telemetry from Chroma (a vector store backend)
 os.environ["CHROMA_TELEMETRY"] = "FALSE"

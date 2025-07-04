@@ -15,7 +15,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langgraph.graph import StateGraph, START, END
 
 # A retriever that fetches legal documents/articles related to civil law
-from app.vectorstore.retriever import civil_retriever
+from app.vectorstore.retrievers import civil_retriever
 
 # Disable telemetry for Chroma (a vector database)
 os.environ["CHROMA_TELEMETRY"] = "FALSE"
