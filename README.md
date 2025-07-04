@@ -19,8 +19,8 @@ This project implements an intelligent legal assistant for internal use in law f
 
 ## Design and Architecture
 
-### Azure RAG Architechture with LangChain and LangGraph
-![Azure RAG Architechture wirth LangChain and LangGraph](img/azure-rag-architecture-langchain-langgraph.png)
+### Azure RAG Architecture with LangChain and LangGraph
+![Azure RAG Architecture with LangChain and LangGraph](img/azure-rag-architecture-langchain-langgraph.png)
 
 ### Legal Agent Workflow
 ![Legal Agent Workflow](img/legal_assistant_workflow.jpg)
@@ -68,7 +68,7 @@ Ingest docs and create chroma local index
 $ python3 app/vectorstore/ingest_docs.py 
 ```
 
-### Enviroment Variables
+### Environment Variables
 .env
 ```
 API_KEY=your-secret-api-key
@@ -97,5 +97,5 @@ See the response
 ## Next Steps and Future Improvements
 1. [Integrate Azure AI Search with LangChain](https://python.langchain.com/docs/integrations/vectorstores/azuresearch/) instead of Chroma.
 2. Create personalized or specialized workflows for each agent.
-3. Utilize more [advanced agentic paterns](https://langchain-ai.github.io/langgraph/tutorials/workflows/) and [RAG tecniques](https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_agentic_rag/) for better retrieval. 
+3. Utilize more [advanced agentic patterns](https://langchain-ai.github.io/langgraph/tutorials/workflows/) and [RAG techniques](https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_agentic_rag/) for better retrieval. 
 4. [Add memory and multistep retrieval](https://python.langchain.com/docs/tutorials/qa_chat_history/).
