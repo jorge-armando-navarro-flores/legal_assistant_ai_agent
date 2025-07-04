@@ -36,11 +36,11 @@ This project implements an intelligent legal assistant for internal use in law f
 legal_agent_rag/
 ├── app/
 |   ├──main.py
-|   ├──classifier.py
+|   ├──router.py
 |   ├──llms.py
 |   └──vector_store/
 │   |   ├── ingest_docs.py         ← Load and create Chroma
-│   |   └── retriever.py           ← Retrieve context
+│   |   └── retrievers.py           ← Retrieve context
 |   └──agents/
 │       ├── policy_agent.py        ← Use RAG
 │       ├── contract_agent.py      ← Use RAG
