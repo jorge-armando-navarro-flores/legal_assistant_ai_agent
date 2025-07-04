@@ -8,6 +8,8 @@ from app.agents.penal_agent import penal_graph
 from app.llms import fallback_llm
 
 os.environ["CHROMA_TELEMETRY"] = "FALSE"
+
+
 # Define the structure of the input state (customer support request)
 class LegalRequest(TypedDict):
     question: str
@@ -32,6 +34,7 @@ def categorize_request(request: LegalRequest):
 
     return "fallback"
 
+
 # Function to process high-priority requests
 def handle_laboral(request: LegalRequest):
     print(f"Routing to laboral agent")
@@ -40,6 +43,7 @@ def handle_laboral(request: LegalRequest):
     request["retrieved_docs"] = response["retrieved_law_articles"]
     request["answer"] = response["generation"]
     return request
+
 
 # Function to process standard requests
 def handle_civil(request: LegalRequest):
@@ -50,6 +54,7 @@ def handle_civil(request: LegalRequest):
     request["answer"] = response["generation"]
     return request
 
+
 # Function to process standard requests
 def handle_penal(request: LegalRequest):
     print(f"Routing to penal agent")
@@ -59,29 +64,31 @@ def handle_penal(request: LegalRequest):
     request["answer"] = response["generation"]
     return request
 
+
 # Function to process standard requests
 def handle_fallback(request: LegalRequest) -> str:
     print(f"fallback agent")
     request["category"] = "General"
     request["answer"] = fallback_llm.invoke(
-        "No se encontró contexto suficiente. Responde de la mejor manera posible: " + request["question"]
+        "No se encontró contexto suficiente. Responde de la mejor manera posible: "
+        + request["question"]
     )
     return request
+
 
 # Create the state graph
 graph = StateGraph(LegalRequest)
 # TODO: Create the graph
-graph.add_node("laboral",handle_laboral)
-graph.add_node("civil",handle_civil)
-graph.add_node("penal",handle_penal)
-graph.add_node("fallback",handle_fallback)
+graph.add_node("laboral", handle_laboral)
+graph.add_node("civil", handle_civil)
+graph.add_node("penal", handle_penal)
+graph.add_node("fallback", handle_fallback)
 
 
-graph.add_conditional_edges(START,categorize_request)
-graph.add_edge("laboral",END)
-graph.add_edge("civil",END)
-graph.add_edge("penal",END)
-graph.add_edge("fallback",END)
+graph.add_conditional_edges(START, categorize_request)
+graph.add_edge("laboral", END)
+graph.add_edge("civil", END)
+graph.add_edge("penal", END)
+graph.add_edge("fallback", END)
 
 legal_assistant_graph = graph.compile()
-

@@ -7,9 +7,10 @@ from langchain_chroma import Chroma
 os.environ["CHROMA_TELEMETRY"] = "FALSE"
 
 
-    
-for dirpath, dirnames, filenames in os.walk("/home/janf/Projects/legal_assistant_ai_agent/docs"):
-    parent_dir = dirpath.split('/')[-1]
+for dirpath, dirnames, filenames in os.walk(
+    "/home/janf/Projects/legal_assistant_ai_agent/docs"
+):
+    parent_dir = dirpath.split("/")[-1]
     for filename in filenames:
         pdf_path = os.path.join(dirpath, filename)
 
@@ -33,7 +34,9 @@ for dirpath, dirnames, filenames in os.walk("/home/janf/Projects/legal_assistant
             persist_directory=persist_directory,  # Where to save data locally, remove if not necessary
         )
 
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000, chunk_overlap=200
+        )
         all_splits = text_splitter.split_documents(docs)
 
         print(f"✅ Índice {collection_name} creado y guardado en: {persist_directory}")

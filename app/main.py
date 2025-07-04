@@ -25,6 +25,7 @@ API_KEY = os.getenv("API_KEY", "default-dev-key")
 
 # ============ DEPENDENCY FUNCTIONS ============
 
+
 # Dependency to verify API key in request headers
 async def verify_api_key(x_api_key: str = Header(...)):
     if x_api_key != API_KEY:
@@ -42,10 +43,7 @@ def read_root():
 
 # POST endpoint to stream chatbot responses
 @app.post("/chat/response", dependencies=[Depends(verify_api_key)])
-def chat_stream(
-    question: str, request: Request
-):
+def chat_stream(question: str, request: Request):
     # Generate a streaming response from the chatbot
     response = legal_assistant_graph.invoke({"question": question})
     return response
-

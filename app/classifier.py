@@ -14,17 +14,18 @@ tagging_prompt = ChatPromptTemplate.from_template(
     Texto:
     {input}
     """
-    )
+)
 
 
 class Classification(BaseModel):
     category: str = Field(
-        description=(
-            "Categoría legal asignada."
-        ),
-        enum=["Derecho Laboral", "Derecho Civil", "Derecho Penal", "General"]
+        description=("Categoría legal asignada."),
+        enum=["Derecho Laboral", "Derecho Civil", "Derecho Penal", "General"],
     )
-    language: str = Field(description="El idioma en el que está escrito el texto.", enum=["español", "ingles"])
+    language: str = Field(
+        description="El idioma en el que está escrito el texto.",
+        enum=["español", "ingles"],
+    )
 
 
 # Structured LLM

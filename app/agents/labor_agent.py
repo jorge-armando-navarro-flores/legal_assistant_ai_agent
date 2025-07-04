@@ -22,9 +22,8 @@ prompt = ChatPromptTemplate.from_template(
     """
 )
 model = fallback_llm
-law_articles_chain = (
-        prompt | model | StrOutputParser()
-)
+law_articles_chain = prompt | model | StrOutputParser()
+
 
 class LawArticlesGraphState(TypedDict):
     question: str
@@ -47,8 +46,14 @@ def generate_laboral_assistance(state):
     print("---GENERATE LABORAL ASSISTANCE---")
     question = state["question"]
     retrieved_law_articles = state["retrieved_law_articles"]
-    generation = law_articles_chain.invoke({"question": question,"context": retrieved_law_articles})
-    return {"question": question, "retrieved_law_articles": retrieved_law_articles,"generation": generation}
+    generation = law_articles_chain.invoke(
+        {"question": question, "context": retrieved_law_articles}
+    )
+    return {
+        "question": question,
+        "retrieved_law_articles": retrieved_law_articles,
+        "generation": generation,
+    }
 
 
 # Current Affairs News Workflow Definition
@@ -64,5 +69,3 @@ def create_laboral_assistant_workflow():
 
 # Execute the Current Affairs News Workflow
 laboral_graph = create_laboral_assistant_workflow()
-
-
